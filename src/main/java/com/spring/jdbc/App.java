@@ -4,6 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.spring.studentDaoImplement.studentDaoimple;
+
 /**
  * Hello world!
  *
@@ -14,16 +16,16 @@ public class App
     {
 		System.out.println("Here program start");
     	
-		 ApplicationContext ctx=new ClassPathXmlApplicationContext("config.xml"); 
+		 ApplicationContext context = new ClassPathXmlApplicationContext("config.xml"); 
     	
-    	System.out.println("Here object created");
+    	studentDaoimple studentimpclass = context.getBean("studentdaoimple",studentDaoimple.class);
     	
-    	JdbcTemplate template = ctx.getBean("jdbcTemplate",JdbcTemplate.class);
+    	student s = new student();
+    	s.setId(2);
+    	s.setName("rahul");
+    	s.setCity("jaipur");
     	
-    	System.out.println("now template created");
-    	
-    	String query = "Create Table user (id int Primary Key, name varchar(26), city varchar(26))";
-    	int result = template.update(query);
+    	int result = studentimpclass.insert(s);
     	
     	System.out.println("number of rows affected"+result);
     	
