@@ -20,14 +20,9 @@ public class App
     	
     	studentDaoimple studentimpclass = context.getBean("studentdaoimple",studentDaoimple.class);
     	
-    	student s = new student();
-    	s.setId(2);
-    	s.setName("rahul");
-    	s.setCity("jaipur");
     	
-    	int result = studentimpclass.insert(s);
-    	
-    	System.out.println("number of rows affected"+result);
+    	student result = studentimpclass.getstudent(2);
+    	System.out.println(result);
     	
     	
     }
